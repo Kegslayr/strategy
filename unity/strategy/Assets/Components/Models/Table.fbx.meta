@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Box
+    second: {fileID: 2100000, guid: fa3339521dc5d2c4fb40a58f45574ec2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: TableEdges
     second: {fileID: 2100000, guid: dff39f1ef770b27478b932613dc00937, type: 2}
   - first:
