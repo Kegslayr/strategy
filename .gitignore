@@ -3,3 +3,9 @@
 ################################################################################
 
 /unity/strategy/Library/Artifacts
+/unity/strategy/Library/Bee
+/unity/strategy/Library/PackageCache
+/unity/strategy/Library/ShaderCache
+/unity/strategy/Logs
+/unity/strategy/obj/Debug
+/unity/strategy/Temp
