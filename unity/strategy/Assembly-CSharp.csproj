@@ -57,7 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\SkinnedHighlighter.cs" />
     <Compile Include="Assets\Scripts\Highlighter.cs" />
+    <Compile Include="Assets\Scripts\ModelController.cs" />
+    <Compile Include="Assets\Components\Scripts\WoblinAnimator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
