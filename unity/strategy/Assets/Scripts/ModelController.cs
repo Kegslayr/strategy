@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class ModelController : MonoBehaviour
 {
     public LayerMask MovementMask;
     public float RayCastDistance = 200f;
+    public Interactable Focus;
     NavMeshAgent _agent;
     Camera _camera;
     // Start is called before the first frame update
@@ -28,18 +30,38 @@ public class ModelController : MonoBehaviour
             {
                 //Debug.Log(hit.collider.name);
                 MoveTo(hit.point);
+                RemoveFocus();
             }
         }
 
-        if (Input.GetMouseButtonUp(1))
+        // Right Mouse Button
+        if (Input.GetMouseButtonDown(1))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 25f))
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                // check if we hit a targetable item
+                //Debug.Log($"Hit: {hit.collider.name}");
+                var interactable = hit.collider.gameObject.GetComponentInParent<Interactable>();
+                if (interactable != null)
+                {
+                    SetFocus(interactable);
+                    _agent.stoppingDistance = Focus.Radius * .8f;
+                    MoveTo(interactable.gameObject.transform.position);
+                }
             }
         }
+    }
+
+    void SetFocus(Interactable newFocus)
+    {
+        Focus = newFocus;
+    }
+
+    void RemoveFocus()
+    {
+        _agent.stoppingDistance = 0f;
+        Focus = null;
     }
 
     public void MoveTo(Vector3 point)

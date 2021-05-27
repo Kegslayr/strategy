@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Highlighter.cs" />
     <Compile Include="Assets\Scripts\ModelController.cs" />
     <Compile Include="Assets\Components\Scripts\WoblinAnimator.cs" />
+    <Compile Include="Assets\Scripts\Interactable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
