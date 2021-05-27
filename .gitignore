@@ -2,14 +2,10 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/unity/strategy/Library/Artifacts
-/unity/strategy/Library/Bee
-/unity/strategy/Library/PackageCache
-/unity/strategy/Library/ShaderCache
-/uniyt/strategy/Library/Search
-/unity/strategy/Logs
-/unity/strategy/obj/Debug
-/unity/strategy/Temp
-/unity/strategy/.vs/strategy/v16
-/unity/strategy/Builds
-/unity/strategy/Library/PlayerDataCache/Win64
+/unity/strategy/Library/*
+/unity/strategy/Logs/*
+/unity/strategy/obj/Debug/*
+/unity/strategy/Temp/*
+/unity/strategy/.vs/strategy/v16/*
+/unity/strategy/Builds/*
+/unity/strategy/Library/PlayerDataCache/Win64/*
