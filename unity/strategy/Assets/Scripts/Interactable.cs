@@ -10,11 +10,47 @@ namespace Assets.Scripts
     public class Interactable: MonoBehaviour
     {
         public float Radius = 3f;
+        public bool Focused = false;
+
+        private bool _hasInteracted = false;
+        private Transform _target;
 
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, Radius);
+        }
+
+        private void Update()
+        {
+            if (Focused && !_hasInteracted)
+            {
+                float distance = Vector3.Distance(_target.position, transform.position);
+                if (distance <= Radius)
+                {
+                    _hasInteracted = true;
+                    Interact();
+                }
+            }
+        }
+
+        public void OnFocused(Transform target)
+        {
+            Focused = true;
+            _target = target;
+            _hasInteracted = false;
+        }
+
+        public void ClearFocus()
+        {
+            Focused = false;
+            _target = null;
+            _hasInteracted = false;
+        }
+
+        public virtual void Interact()
+        {
+            Debug.Log($"{_target.transform.name} interacting with {transform.name}");
         }
     }
 }

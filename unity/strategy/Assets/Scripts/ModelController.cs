@@ -55,12 +55,17 @@ public class ModelController : MonoBehaviour
 
     void SetFocus(Interactable newFocus)
     {
-        Focus = newFocus;
+        if (Focus != newFocus)
+        {
+            Focus = newFocus;
+            Focus.OnFocused(transform);
+        }
     }
 
     void RemoveFocus()
     {
         _agent.stoppingDistance = 0f;
+        Focus.ClearFocus();
         Focus = null;
     }
 
