@@ -21,6 +21,9 @@ public class ModelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If we are in the correct state
+        if (!GameManager.Instance.State.HasFlag(GameState.PlayerTurn)) return;
+
         // Move to
         if (Input.GetMouseButtonDown(0))
         {
@@ -65,7 +68,8 @@ public class ModelController : MonoBehaviour
     void RemoveFocus()
     {
         _agent.stoppingDistance = 0f;
-        Focus.ClearFocus();
+        if (Focus != null)
+            Focus.ClearFocus();
         Focus = null;
     }
 
