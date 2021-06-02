@@ -10,7 +10,7 @@ namespace Assets.Scripts
     public class Inventory: MonoBehaviour
     {
         public delegate void OnItemChanged();
-        public OnItemChanged OnItemChagedCallback;
+        public OnItemChanged OnItemChangedCallback;
         public List<Item> Items = new List<Item>();
         public int Space = 20;
 
@@ -24,8 +24,8 @@ namespace Assets.Scripts
             if (!item.DefaultItem)
             {
                 Items.Add(item);
-                if (OnItemChagedCallback != null)
-                    OnItemChagedCallback();
+                if (OnItemChangedCallback != null)
+                    OnItemChangedCallback();
             }
             return true;
         }

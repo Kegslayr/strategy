@@ -20,5 +20,12 @@ namespace Assets.Scripts
         {
             GameManager.Instance.ToggleCurrentInventory();
         }
+
+        public void DisplayModelInventory(Model model)
+        {
+            var ui = ModelInventoryUI.GetComponent<ModelInventoryUI>();
+            ui.DisplayItems(model.Inventory);
+            ModelInventoryUI.SetActive(true);
+        }
     }
 }

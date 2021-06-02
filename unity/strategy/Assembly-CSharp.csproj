@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Highlighter.cs" />
     <Compile Include="Assets\Scripts\ModelController.cs" />
+    <Compile Include="Assets\Scripts\ModelInventoryUI.cs" />
+    <Compile Include="Assets\Scripts\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Components\Scripts\WoblinAnimator.cs" />
     <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />

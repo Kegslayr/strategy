@@ -79,8 +79,14 @@ namespace Assets.Scripts
             } else
             {
                 PushState(GameState.ModelInventory);
-                UIManager.ModelInventoryUI.SetActive(true);
+                UIManager.DisplayModelInventory(Current);
             }
+        }
+
+        public void OnUseInventoryItem(Item item)
+        {
+            if (!Current) return;
+            Debug.Log($"GameManager OnUseInvetoryItem: {item.name}"); 
         }
 
     }
