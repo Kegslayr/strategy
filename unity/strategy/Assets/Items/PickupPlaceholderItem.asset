@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PickupPlaceholderItem
   m_EditorClassIdentifier: 
   Name: Pickup Placeholder Item
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 6e26ebf3d1c5e1c4289251cefe149132, type: 3}
   DefaultItem: 0

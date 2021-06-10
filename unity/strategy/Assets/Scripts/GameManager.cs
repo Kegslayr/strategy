@@ -44,7 +44,7 @@ namespace Assets.Scripts
         private void Update()
         {
             // Model Inventory PlayerTurn & ModelInventory
-            if (Input.GetKeyUp(KeyCode.I) && (State.HasFlag(GameState.PlayerTurn & GameState.ModelInventory)))
+            if (Input.GetButtonUp("Inventory") && (State.HasFlag(GameState.PlayerTurn & GameState.ModelInventory)))
             { 
                 if (Current == null)
                 {
