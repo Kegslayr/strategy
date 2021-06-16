@@ -10,6 +10,7 @@ namespace Assets.Scripts
     public class UIManager: MonoBehaviour
     {
         public GameObject ModelInventoryUI;
+        public GameObject ContainerInventoryUI;
 
         public void DebugUIHandler()
         {
@@ -21,11 +22,23 @@ namespace Assets.Scripts
             GameManager.Instance.ToggleCurrentInventory();
         }
 
+        public void OnContainerInventoryClose()
+        {
+            GameManager.Instance.ToggleContainerInventory(null);
+        }
+
         public void DisplayModelInventory(Model model)
         {
-            var ui = ModelInventoryUI.GetComponent<ModelInventoryUI>();
+            var ui = ModelInventoryUI.GetComponent<InventoryUI>();
             ui.DisplayItems(model.Inventory);
             ModelInventoryUI.SetActive(true);
+        }
+
+        public void DisplayContainerInventory(Container container)
+        {
+            var ui = ContainerInventoryUI.GetComponent<InventoryUI>();
+            ui.DisplayItems(container._inventory);
+            ContainerInventoryUI.SetActive(true);
         }
     }
 }

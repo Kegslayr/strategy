@@ -10,7 +10,7 @@ namespace Assets.Scripts
     public enum GameState {
         Initializing = 0,
         MainMenu = 1,
-        ModelInventory = 2,
+        Inventory = 2,
         PlayerTurn = 4,
         EnemyTurn = 8
     };
@@ -44,7 +44,7 @@ namespace Assets.Scripts
         private void Update()
         {
             // Model Inventory PlayerTurn & ModelInventory
-            if (Input.GetButtonUp("Inventory") && (State.HasFlag(GameState.PlayerTurn & GameState.ModelInventory)))
+            if (Input.GetButtonUp("Inventory") && (State.HasFlag(GameState.PlayerTurn & GameState.Inventory)))
             { 
                 if (Current == null)
                 {
@@ -78,8 +78,21 @@ namespace Assets.Scripts
                 UIManager.ModelInventoryUI.SetActive(false);
             } else
             {
-                PushState(GameState.ModelInventory);
+                PushState(GameState.Inventory);
                 UIManager.DisplayModelInventory(Current);
+            }
+        }
+
+        public void ToggleContainerInventory(Container container)
+        {
+            if (UIManager.ContainerInventoryUI.activeSelf)
+            {
+                PopState();
+                UIManager.ContainerInventoryUI.SetActive(false);
+            } else
+            {
+                PushState(GameState.Inventory);
+                UIManager.DisplayContainerInventory(container);
             }
         }
 
