@@ -29,7 +29,7 @@ namespace Assets.Scripts
                 if (distance <= Radius)
                 {
                     _hasInteracted = true;
-                    Interact();
+                    Interact(this.gameObject);
                 }
             }
         }
@@ -48,7 +48,7 @@ namespace Assets.Scripts
             _hasInteracted = false;
         }
 
-        public virtual void Interact()
+        public virtual void Interact(GameObject interactable)
         {
             Debug.Log($"{_target.transform.name} interacting with {transform.name}");
         }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemPickup : Interactable
 {
     public Item Item;
-    public override void Interact()
+    public override void Interact(GameObject interactable)
     {
         Pickup();
     }
