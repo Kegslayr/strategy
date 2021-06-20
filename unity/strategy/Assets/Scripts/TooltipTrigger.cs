@@ -5,10 +5,7 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public string Header;
-    public string Description;
-    [Multiline()]
-    public string Content;
+    public Item Item;
     private static LTDescr _delay;
 
     private void OnMouseEnter()
@@ -35,7 +32,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         _delay = LeanTween.delayedCall(0.5f, () =>
         {
-            TooltipSystem.Show(Header, Description, Content);
+            TooltipSystem.Show(Item.Header, Item.Description, Item.Content);
         });
     }
 

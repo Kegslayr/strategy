@@ -8,4 +8,7 @@ public class Item : ScriptableObject
     public string Name = "New Item";
     public Sprite Icon = null;
     public bool DefaultItem = false;
+    public string Header;
+    public string Description;
+    public string Content;
 }

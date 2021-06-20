@@ -13,7 +13,21 @@ namespace Assets.Scripts
         public OnItemChanged OnItemChangedCallback;
         public List<Item> Items = new List<Item>();
         public int Space = 20;
+        public bool EquipmentManager = false;
+        public SkinnedMeshRenderer EquipmentOwnerMesh;
+        private int _numEquipmentSlots;
+        private Equipment[] _currentEquipment;
+        private SkinnedMeshRenderer[] _currentMeshes;
 
+        private void Start()
+        {
+            if (EquipmentManager)
+            {
+                _numEquipmentSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
+                _currentEquipment = new Equipment[_numEquipmentSlots];
+                _currentMeshes = new SkinnedMeshRenderer[_numEquipmentSlots];
+            }
+        }
         public bool Add(Item item)
         {
             if (Items.Count >= Space)
@@ -33,6 +47,42 @@ namespace Assets.Scripts
         public void Remove(Item item)
         {
             Items.Remove(item);
+        }
+
+        public void Equip(Equipment newEquipment)
+        {
+            if (!EquipmentManager) return;
+
+            int index = (int)newEquipment.Slot;
+            Equipment oldEquipment = null;
+
+            if (_currentEquipment[index] != null)
+            {
+                oldEquipment = _currentEquipment[index];
+                Add(oldEquipment);
+            }
+
+            // Todo Add callback onEquipmentChanged()
+
+            _currentEquipment[index] = newEquipment;
+            SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newEquipment.Mesh);
+            newMesh.transform.parent = EquipmentOwnerMesh.transform;
+            newMesh.bones = EquipmentOwnerMesh.bones;
+            newMesh.rootBone = EquipmentOwnerMesh.rootBone;
+            _currentMeshes[index] = newMesh;
+        }
+
+        public void UnEquip(int index)
+        {
+            if (!EquipmentManager) return;
+            if (_currentEquipment[index] == null) return;
+            Destroy(_currentMeshes[index].gameObject);
+            Equipment oldEquipment = _currentEquipment[index];
+            Add(oldEquipment);
+            _currentEquipment[index] = null;
+
+            // Todo Add callback onEquipmentChanged()
+
         }
     }
 }

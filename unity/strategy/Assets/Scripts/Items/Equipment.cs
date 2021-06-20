@@ -7,4 +7,5 @@ public enum EquipmentSlot { Head, Chest, Legs, Waist, Weapon, Shield, Offhand, F
 public class Equipment : Item
 {
     public EquipmentSlot Slot;
+    public SkinnedMeshRenderer Mesh;
 }

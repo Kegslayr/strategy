@@ -9,6 +9,7 @@ public class ItemSlot : MonoBehaviour
     public Button Button;
     public Image Icon;
     Item Item;
+    private TooltipTrigger _tooltip;
 
     private void Start()
     {
@@ -20,6 +21,8 @@ public class ItemSlot : MonoBehaviour
         Item = item;
         Icon.sprite = item.Icon;
         Icon.enabled = true;
+        if (_tooltip == null) _tooltip = Icon.GetComponent<TooltipTrigger>();
+        _tooltip.Item = item;
         Button.interactable = true;
     }
 
@@ -31,13 +34,13 @@ public class ItemSlot : MonoBehaviour
         Button.interactable = false;
     }
 
-    public void UseItem()
-    {
-        GameManager.Instance.OnUseInventoryItem(Item);
-    }
-
     private void OnUseItem()
     {
-        GameManager.Instance.OnUseInventoryItem(Item);
+        // Determine the item type and act accordingly
+        if (Item is Equipment)
+        {
+            GameManager.Instance.OnEquipItem(Item as Equipment);
+        } else
+            GameManager.Instance.OnUseInventoryItem(Item);
     }
 }

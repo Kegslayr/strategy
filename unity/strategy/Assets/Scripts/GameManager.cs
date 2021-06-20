@@ -102,5 +102,12 @@ namespace Assets.Scripts
             Debug.Log($"GameManager OnUseInvetoryItem: {item.name}"); 
         }
 
+        public void OnEquipItem(Equipment equipment)
+        {
+            if (!Current) return;
+            Debug.Log($"GameManager OnEquipItem: {equipment.name}");
+            Current.Inventory.Equip(equipment);
+        }
+
     }
 }
