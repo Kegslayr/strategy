@@ -38,6 +38,8 @@ namespace Assets.Scripts
 
             // Todo: MDG For now we start in the PlayerTurn state
             PushState(GameState.PlayerTurn);
+            // Todo: Support a Current Model change system and swap over callbacks
+            Current.Inventory.OnEquipmentChangedCallback = OnEquipmentChanged;
             DontDestroyOnLoad(gameObject);
         }
 
@@ -52,6 +54,11 @@ namespace Assets.Scripts
                     return;
                 }
                 ToggleCurrentInventory();
+            }
+            else if (Input.GetButtonUp("UnEquipAll"))
+            {
+                if (Current == null) return;
+                Current.Inventory.UnEquipAll();
             }
         }
 
@@ -107,6 +114,15 @@ namespace Assets.Scripts
             if (!Current) return;
             Debug.Log($"GameManager OnEquipItem: {equipment.name}");
             Current.Inventory.Equip(equipment);
+        }
+
+        public void OnEquipmentChanged(Equipment newEquipment, Equipment oldEquipment)
+        {
+            if (State.HasFlag(GameState.Inventory))
+            {
+                var ui = UIManager.ModelInventoryUI.GetComponent<InventoryUI>();
+                ui.DisplayItems(Current.Inventory);
+            }
         }
 
     }

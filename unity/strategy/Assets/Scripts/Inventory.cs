@@ -10,7 +10,9 @@ namespace Assets.Scripts
     public class Inventory: MonoBehaviour
     {
         public delegate void OnItemChanged();
+        public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
         public OnItemChanged OnItemChangedCallback;
+        public OnEquipmentChanged OnEquipmentChangedCallback;
         public List<Item> Items = new List<Item>();
         public int Space = 20;
         public bool EquipmentManager = false;
@@ -62,14 +64,17 @@ namespace Assets.Scripts
                 Add(oldEquipment);
             }
 
-            // Todo Add callback onEquipmentChanged()
-
             _currentEquipment[index] = newEquipment;
             SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newEquipment.Mesh);
             newMesh.transform.parent = EquipmentOwnerMesh.transform;
             newMesh.bones = EquipmentOwnerMesh.bones;
             newMesh.rootBone = EquipmentOwnerMesh.rootBone;
             _currentMeshes[index] = newMesh;
+            // remove from inventory since it is equipped
+            Remove(newEquipment);
+            SetEquipmentBlendShapes(newEquipment, 100);
+            
+            if (OnEquipmentChangedCallback != null) OnEquipmentChangedCallback(newEquipment, oldEquipment);
         }
 
         public void UnEquip(int index)
@@ -80,9 +85,29 @@ namespace Assets.Scripts
             Equipment oldEquipment = _currentEquipment[index];
             Add(oldEquipment);
             _currentEquipment[index] = null;
+            SetEquipmentBlendShapes(oldEquipment, 0);
 
-            // Todo Add callback onEquipmentChanged()
+            if (OnEquipmentChangedCallback != null) OnEquipmentChangedCallback(null, oldEquipment);
+        }
 
+        public void UnEquipAll()
+        {
+            if (!EquipmentManager) return;
+            for(int i = 0; i < _currentEquipment.Length; i++)
+            {
+                UnEquip(i);
+            }
+        }
+
+        private void SetEquipmentBlendShapes(Equipment eq, int weight)
+        {
+            foreach (EquipmentBlendShape shape in eq.CoveredBlendShapes)
+            {
+                // Todo: Once we have the correct number of blend shapes in the mode then cast the shape to fit the region
+                // EquipmentOwnerMesh.SetBlendShapeWeight((int)shape, weight);
+                // for now we only have Legs
+                EquipmentOwnerMesh.SetBlendShapeWeight(0, weight);
+            }
         }
     }
 }

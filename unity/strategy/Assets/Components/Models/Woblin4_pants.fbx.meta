@@ -6,6 +6,15 @@ ModelImporter:
   - first:
       74: -7361427651036151181
     second: rig|Idle
+  - first:
+      74: -623603649343465320
+    second: Scene
+  - first:
+      74: 5642448380023574130
+    second: Goblin|Idle
+  - first:
+      74: 6685928662035275798
+    second: pants|Idle
   externalObjects:
   - first:
       type: UnityEngine:Material
