@@ -18,6 +18,7 @@ MonoBehaviour:
   Header: Leather Pants
   Description: Simple leather pants
   Content: Armor + 1
+  Id: 1
   Slot: 2
   Mesh: {fileID: 265537344996800366, guid: c57e25e7ffd932342a9994e2e64dbb44, type: 3}
   CoveredBlendShapes: 03000000

@@ -14,22 +14,36 @@ namespace Assets.Scripts
         public OnItemChanged OnItemChangedCallback;
         public OnEquipmentChanged OnEquipmentChangedCallback;
         public List<Item> Items = new List<Item>();
+        public Equipment[] Equipment;
         public int Space = 20;
         public bool EquipmentManager = false;
         public SkinnedMeshRenderer EquipmentOwnerMesh;
         private int _numEquipmentSlots;
-        private Equipment[] _currentEquipment;
         private SkinnedMeshRenderer[] _currentMeshes;
 
-        private void Start()
+        private void Awake()
         {
             if (EquipmentManager)
             {
                 _numEquipmentSlots = Enum.GetNames(typeof(EquipmentSlot)).Length;
-                _currentEquipment = new Equipment[_numEquipmentSlots];
                 _currentMeshes = new SkinnedMeshRenderer[_numEquipmentSlots];
+                Equipment = new Equipment[_numEquipmentSlots];
             }
         }
+
+        public int ItemCount { get { return Items.Count; } }
+        public int EquipmentCount { 
+            get {
+                int count = 0;
+                for(int i = 0; i < _numEquipmentSlots; i++)
+                {
+                    if (Equipment[i] != null) count++;
+                }
+                return count;
+            }
+        }
+        public int NumEquipmentSlots { get { return _numEquipmentSlots; } }
+
         public bool Add(Item item)
         {
             if (Items.Count >= Space)
@@ -58,13 +72,13 @@ namespace Assets.Scripts
             int index = (int)newEquipment.Slot;
             Equipment oldEquipment = null;
 
-            if (_currentEquipment[index] != null)
+            if (Equipment[index] != null)
             {
-                oldEquipment = _currentEquipment[index];
+                oldEquipment = Equipment[index];
                 Add(oldEquipment);
             }
 
-            _currentEquipment[index] = newEquipment;
+            Equipment[index] = newEquipment;
             SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newEquipment.Mesh);
             newMesh.transform.parent = EquipmentOwnerMesh.transform;
             newMesh.bones = EquipmentOwnerMesh.bones;
@@ -80,11 +94,11 @@ namespace Assets.Scripts
         public void UnEquip(int index)
         {
             if (!EquipmentManager) return;
-            if (_currentEquipment[index] == null) return;
+            if (Equipment[index] == null) return;
             Destroy(_currentMeshes[index].gameObject);
-            Equipment oldEquipment = _currentEquipment[index];
+            Equipment oldEquipment = Equipment[index];
             Add(oldEquipment);
-            _currentEquipment[index] = null;
+            Equipment[index] = null;
             SetEquipmentBlendShapes(oldEquipment, 0);
 
             if (OnEquipmentChangedCallback != null) OnEquipmentChangedCallback(null, oldEquipment);
@@ -93,7 +107,7 @@ namespace Assets.Scripts
         public void UnEquipAll()
         {
             if (!EquipmentManager) return;
-            for(int i = 0; i < _currentEquipment.Length; i++)
+            for(int i = 0; i < _numEquipmentSlots; i++)
             {
                 UnEquip(i);
             }

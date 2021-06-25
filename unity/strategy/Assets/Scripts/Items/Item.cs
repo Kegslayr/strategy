@@ -11,4 +11,5 @@ public class Item : ScriptableObject
     public string Header;
     public string Description;
     public string Content;
+    public int Id;
 }

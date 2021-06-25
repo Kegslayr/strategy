@@ -47,6 +47,7 @@ namespace Assets.Scripts
     public class LootManager: MonoBehaviour
     {
         public static LootManager Instance;
+        public ItemCache Cache;
 
         private void Awake()
         {
@@ -65,6 +66,11 @@ namespace Assets.Scripts
             }
           
             return loot;
+        }
+
+        public Equipment GetEquipmentById(int id)
+        {
+            return Cache.GetEquipmentById(id);
         }
     }
 }

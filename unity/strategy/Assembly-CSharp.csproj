@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\TooltipSystem.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Scripts\Items\Equipment.cs" />
+    <Compile Include="Assets\Scripts\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Model.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingUnitTests.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\TooltipTrigger.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
     <Compile Include="Assets\Scripts\SkinnedHighlighter.cs" />
+    <Compile Include="Assets\Scripts\ModelData.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingPunch.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Assets\Scripts\Items\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\Items\Container.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
+    <Compile Include="Assets\Scripts\ItemCache.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />

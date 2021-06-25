@@ -33,6 +33,7 @@ public class WoblinAnimator : MonoBehaviour
 
         float speedPercent = Speed / MaxSpeed;
         */
+        //Debug.Log($"mag: {_agent.velocity.magnitude} speed: {_agent.speed}");
         float speedPercent = _agent.velocity.magnitude / _agent.speed;
         //Debug.Log($"SpeedPercent: {speedPercent}");
         _animiator.SetFloat("SpeedPercent", speedPercent, SmoothTime, Time.deltaTime);

@@ -40,7 +40,15 @@ namespace Assets.Scripts
             PushState(GameState.PlayerTurn);
             // Todo: Support a Current Model change system and swap over callbacks
             Current.Inventory.OnEquipmentChangedCallback = OnEquipmentChanged;
+
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start()
+        {
+            // Load the current models and their equipment from the save file
+            // Todo: for now just the current model is equipped
+            Current.Load();
         }
 
         private void Update()
@@ -54,6 +62,16 @@ namespace Assets.Scripts
                     return;
                 }
                 ToggleCurrentInventory();
+            }
+            // Save Game
+            else if (Input.GetButtonUp("Save"))
+            {
+                SaveGame();
+            }
+            // Load Game
+            else if (Input.GetButtonUp("Load"))
+            {
+                LoadGame();
             }
             else if (Input.GetButtonUp("UnEquipAll"))
             {
@@ -123,6 +141,18 @@ namespace Assets.Scripts
                 var ui = UIManager.ModelInventoryUI.GetComponent<InventoryUI>();
                 ui.DisplayItems(Current.Inventory);
             }
+        }
+
+        public void SaveGame()
+        {
+            // For now we just save the current model
+            Current.Save();
+        }
+
+        public  void LoadGame()
+        {
+            // For now we just load the current model
+            Current.Load();
         }
 
     }
