@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09ee28c42a705e4b8f47a08ebacf0f8, type: 3}
+  m_Name: linen_pants_red
+  m_EditorClassIdentifier: 
+  Name: Linen Pants Red
+  Icon: {fileID: 21300000, guid: f4e5cd4ea4900e846b9489430fbef0f4, type: 3}
+  DefaultItem: 0
+  Header: Linen Pants Red
+  Description: Red linen pants
+  Content: Armor +1
+  Id: 4
+  Slot: 2
+  Mesh: {fileID: 946559800539947305, guid: 4c72375eaa758614e9f1b39df2772350, type: 3}
+  CoveredBlendShapes: 

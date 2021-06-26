@@ -70,14 +70,8 @@ namespace Assets.Scripts
             if (!EquipmentManager) return;
 
             int index = (int)newEquipment.Slot;
-            Equipment oldEquipment = null;
-
-            if (Equipment[index] != null)
-            {
-                oldEquipment = Equipment[index];
-                Add(oldEquipment);
-            }
-
+            Equipment oldEquipment = Equipment[index];
+            UnEquip(index);
             Equipment[index] = newEquipment;
             SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newEquipment.Mesh);
             newMesh.transform.parent = EquipmentOwnerMesh.transform;

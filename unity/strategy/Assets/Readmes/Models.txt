@@ -1,0 +1,23 @@
+﻿Create new model equipment
+ - Duplicate faces on model and create new object in blender (see Sabasten Lage video)
+ - Scale up new object and model as needed
+ - Isolate object in blender and uv map
+ - Create a new material for the object
+ - Texture paint the new texture (use a starter image from Gimp such as line.jpg)
+ - Export the model by selecting the model then the epuipment then select the rig last (i.e. goblin, pants, shirt, rig)
+ - Export an icon by going to Shading view -> View -> Render View Image
+ - Import into Gimp
+ - Resale layer to match up to existing icons (leather_pants.png)
+ - Import icon into UI/Icons
+ - Add the model to the scene (from Components/Models/type)
+ - Unpack the model prefab completely
+ - Copy the equipment from the project window to Items/Meshes/type (i.e. Items/Meshes/Goblin/linen_pants)
+ - Set or create a material for the equipment
+ - Create and Equipment in Items/type (Items/Goblin/linen_pants)
+ - Set properties including the Icon and drag the Equipment Mesh on the Mesh property
+ - To duplicate an existing copy the mesh from an unpacked prefab in the scene to the Item/Meshes/type directory and update the material being used (i.e linen_pants -> linen_pants_red)
+
+Color Swap Material Texture
+ - Open texture in Gimp (.xcf if possible)
+ - Save as new Texture (linen_pants -> linen_pants_red)
+ - Adjust colors from Colors menu (i.e. Colors -> Color Temperature)
