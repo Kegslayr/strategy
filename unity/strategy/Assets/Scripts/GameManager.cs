@@ -129,7 +129,7 @@ namespace Assets.Scripts
 
         public void OnEquipItem(Equipment equipment)
         {
-            if (!Current) return;
+            if (!Current || !equipment) return;
             Debug.Log($"GameManager OnEquipItem: {equipment.name}");
             Current.Inventory.Equip(equipment);
         }

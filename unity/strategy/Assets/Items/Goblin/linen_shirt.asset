@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09ee28c42a705e4b8f47a08ebacf0f8, type: 3}
+  m_Name: linen_shirt
+  m_EditorClassIdentifier: 
+  Name: Linen Shirt
+  Icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  DefaultItem: 0
+  Header: Linen Shirt
+  Description: Simple linen shirt
+  Content: Armor +1
+  Id: 5
+  Slot: 1
+  Mesh: {fileID: 2240968720616376775, guid: 6dbd12cf64873014182ef4c9c2951f45, type: 3}
+  CoveredBlendShapes: 
