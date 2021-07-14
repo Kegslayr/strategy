@@ -21,3 +21,18 @@ Color Swap Material Texture
  - Open texture in Gimp (.xcf if possible)
  - Save as new Texture (linen_pants -> linen_pants_red)
  - Adjust colors from Colors menu (i.e. Colors -> Color Temperature)
+
+Blender Parent Bone to Individual Mesh
+ - Object Mode select Mesh
+ - Shift Left Click on Armature
+ - Switch to Pose Mode
+ - Select Bone
+ - Ctrl + P Bone (to parent mesh to bone)
+
+Blender Weight Paint a Mesh for a Given Bone
+ - Object Mode select the Mesh
+ - Switch to Weight Paint Mode
+ - Go to Object Data Properties (Green Triangle Tab near Modifiers)
+ - Select the Vertex Group you want to adjust (will be named same as the bone)
+ - Go to Active Tool (Top tab like Modifiers)
+ - Adjust the Brush (Mix to add weight, Subtract to remove)

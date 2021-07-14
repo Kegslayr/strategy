@@ -1,0 +1,24 @@
+﻿Export Model from Blender
+ - Go to Modeling View
+ - Select all meshes to be exported
+ - Select the Armature or Rig last
+ - Export fbx (selected objects only - Armature and Mesh)
+ - Export to Assests/Models directory and verfiy model and animations are there
+ - Rename animations as needed
+ - Set animations to Loop Time
+
+Create an AnimationController
+ - See HumanAnimController for details
+
+Create Prefab from Exported Model
+ - Create an empty GameObject name it (HumanModel)
+ - Reset transform
+ - Components
+  - Model Controller
+  - Nav Mesh Agent (See Setting Nav Mesh Agent Below)
+  - Add HumanAnimator script and set controller
+ - Add the model prefab as a child
+ - Set the name to Model
+ - Components
+  - Animator (sete to created controller)
+  
